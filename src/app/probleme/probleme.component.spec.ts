@@ -57,6 +57,11 @@ describe('ProblemeComponent', () => {
     expect(zone.valid).toBeTruthy();
   });
 
+  it('champ prenom valide avec 2 espaces et un caractère', () => {
+    let zone = component.problemeForm.get('prenomProbleme');
+    zone.setValue('  e');
+    expect(zone.valid).toBeTruthy();
+  });
 
   // it('test champ vide invalide', () => {
   //   expect(component.problemeForm.valid).toBeFalsy();
