@@ -44,6 +44,18 @@ describe('ProblemeComponent', () => {
     expect(zone.valid).toBeTruthy();
   });
 
+  it('champ prenom invalide avec aucune valeur', () => {
+    let errors = {};
+    let zone = component.problemeForm.get('prenomProbleme');
+    errors = zone.errors || {};
+    expect(errors['required']).toBeTruthy();
+  });
+
+
+  // it('test champ vide invalide', () => {
+  //   expect(component.problemeForm.valid).toBeFalsy();
+  // });
+
   // it('champ nom du probleme doit comporter entre 0 et 50 caractères', () => {
   //   let zone = component.problemeForm.controls['prenomProbleme'];
   //   zone.setValue('a'.repeat(51));
