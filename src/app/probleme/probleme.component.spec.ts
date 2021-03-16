@@ -32,6 +32,12 @@ describe('ProblemeComponent', () => {
     expect(errors['minLength']).toBeFalsy();
   });
 
+  it('champ prenom valide avec 3 caractères', () => {
+    let zone = component.problemeForm.get('prenomProbleme');
+    zone.setValue('a'.repeat(3));
+    expect(zone.valid).toBeTruthy();
+  });
+
   // it('champ nom du probleme doit comporter entre 0 et 50 caractères', () => {
   //   let zone = component.problemeForm.controls['prenomProbleme'];
   //   zone.setValue('a'.repeat(51));
