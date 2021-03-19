@@ -1,15 +1,37 @@
 <div class="container">
-    <br />
-    <div class="card">
-        <div class="card-header text-white bg-secondary">
-            Déclarer un problème
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Titre special</h5>
-            <p class="card-text">Pour des problèmes spéciaux.</p>
-            <a href="#" class="btn btn-primary">
-                <fa-icon [icon]="faSave"></fa-icon> Sauvegarder
-            </a>
-        </div>
+  <br />
+  <div class="card">
+    <div class="card-header text-white bg-secondary">
+      Déclarer un problème
     </div>
+    <div class="card-body">
+      <p class="card-text">Veuillez renseigner les zones suivantes et soumettre votre demande.</p>
+      <div class="card-text">
+        <form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="problemeForm">
+          <div class="row mb-3">
+            <label for="prenomId" class="col-md-2 col-form-label">Prénom :</label>
+            <div class="col-md-10">
+              <input class="form-control" id="prenomId" type="text" placeholder="Votre prénom ici (obligatoire)"
+                formControlName="prenom" [ngClass]="{'is-valid':(problemeForm.get('prenom').touched ||
+                problemeForm.get('prenom').dirty) &&
+                (problemeForm.get('prenom').valid),
+                'is-invalid':(problemeForm.get('prenom').touched ||
+                problemeForm.get('prenom').dirty) &&
+                (!problemeForm.get('prenom').valid)}" />
+            </div>
+            <span *ngIf="(problemeForm.get('prenom').touched ||
+                        problemeForm.get('prenom').dirty) &&
+                        (problemeForm.get('prenom').errors)">
+              <span *ngIf="problemeForm.get('prenom').errors.minlength">
+                Indiquer au moins 3 caractères.
+              </span>
+            </span>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Sauvegarder
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

@@ -29,7 +29,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('prenomProbleme');
     zone.setValue('a'.repeat(2));
     errors = zone.errors || {};
-    expect(errors['minLength']).toBeFalsy();
+    expect(errors['minlength']).toBeTruthy();
   });
 
   it('champ prenom valide avec 3 caractères', () => {
