@@ -28,8 +28,41 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## For development
 
-Clone the repository with this command :
+1. Clone the repository with this command :
 
-```bash
+```git
 git clone https://github.com/Huguesmmm/Interventions.git
+```
+
+2. Installer node.js LTS
+
+- À partir de l'exécuteur : https://nodejs.org/en/
+
+- Avec chocolatey : 
+```Powershell
+choco install nodejs-lts
+```
+
+3. Reboot the computer
+4. Go to the application directory :
+
+```Powershell
+cd thedirectorypath/
+```
+5. Install the node modules:
+
+```Powershell
+npm install
+```
+
+6. Run the application :
+
+```Powershell
+npm start
+```
+
+7. (Optional) Install angular/cli globally :
+
+```Powershell
+npm install -g @angular/cli
 ```
