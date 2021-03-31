@@ -26,41 +26,43 @@ describe('ProblemeComponent', () => {
 
   it('champ prenom invalide avec 2 caractères', () => {
     let errors = {};
-    let zone = component.problemeForm.get('prenomProbleme');
+    let zone = component.problemeForm.get('prenom');
     zone.setValue('a'.repeat(2));
     errors = zone.errors || {};
-    expect(errors['minlength']).toBeTruthy();
+    expect(errors['nbCaracteresInsuffisants']).toBe(true);
   });
 
   it('champ prenom valide avec 3 caractères', () => {
-    let zone = component.problemeForm.get('prenomProbleme');
+    let zone = component.problemeForm.get('prenom');
     zone.setValue('a'.repeat(3));
     expect(zone.valid).toBeTruthy();
   });
 
   it('champ prenom valide avec 200 caractères', () => {
-    let zone = component.problemeForm.get('prenomProbleme');
+    let zone = component.problemeForm.get('prenom');
     zone.setValue('f'.repeat(200));
     expect(zone.valid).toBeTruthy();
   });
 
   it('champ prenom invalide avec aucune valeur', () => {
     let errors = {};
-    let zone = component.problemeForm.get('prenomProbleme');
+    let zone = component.problemeForm.get('prenom');
     errors = zone.errors || {};
     expect(errors['required']).toBeTruthy();
   });
 
-  it('champ prenom valide avec 10 espaces', () => {
-    let zone = component.problemeForm.get('prenomProbleme');
+  it('champ prenom invalide avec 10 espaces', () => {
+    let errors = {};
+    let zone = component.problemeForm.get('prenom');
+    errors = zone.errors || {};
     zone.setValue(' '.repeat(10));
-    expect(zone.valid).toBeTruthy();
+    expect(errors['nbCaracteresInsuffisants']).toBe(true);
   });
 
-  it('champ prenom valide avec 2 espaces et un caractère', () => {
-    let zone = component.problemeForm.get('prenomProbleme');
+  it('champ prenom invalide avec 2 espaces et un caractère', () => {
+    let zone = component.problemeForm.get('prenom');
     zone.setValue('  e');
-    expect(zone.valid).toBeTruthy();
+    expect(zone.valid).toBeFalse();
   });
 
   // it('test champ vide invalide', () => {

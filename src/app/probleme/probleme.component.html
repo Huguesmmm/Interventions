@@ -18,15 +18,67 @@
                 'is-invalid':(problemeForm.get('prenom').touched ||
                 problemeForm.get('prenom').dirty) &&
                 (!problemeForm.get('prenom').valid)}" />
-            </div>
-            <span *ngIf="(problemeForm.get('prenom').touched ||
+              <span *ngIf="(problemeForm.get('prenom').touched ||
                         problemeForm.get('prenom').dirty) &&
                         (problemeForm.get('prenom').errors)">
-              <span *ngIf="problemeForm.get('prenom').errors.minlength">
-                Indiquer au moins 3 caractères.
+                <small class="text-muted">
+                  Merci de saisir votre prénom.
+                </small>
+                <span *ngIf="problemeForm.get('prenom').errors.nbCaracteresInsuffisants">
+                  <small class="text-muted">
+                    Veuillez saisir plus de caractères.
+                  </small>
+                </span>
               </span>
-            </span>
+            </div>
           </div>
+
+          <div class="row mb-3">
+            <label for="nomId" class="col-md-2 col-form-label">Nom :</label>
+            <div class="col-md-10">
+              <input class="form-control" id="nomId" type="text" placeholder="Votre nom ici (obligatoire)"
+                formControlName="nom" [ngClass]="{'is-valid':(problemeForm.get('nom').touched ||
+                problemeForm.get('nom').dirty) &&
+                (problemeForm.get('nom').valid),
+                'is-invalid':(problemeForm.get('nom').touched ||
+                problemeForm.get('nom').dirty) &&
+                (!problemeForm.get('nom').valid)}" />
+              <span *ngIf="(problemeForm.get('nom').touched ||
+                        problemeForm.get('nom').dirty) &&
+                        (problemeForm.get('nom').errors)">
+                <span *ngIf="problemeForm.get('nom').errors.required">
+                  <small class="text-muted">
+                    Merci de saisir votre nom.
+                  </small>
+                </span>
+                <span *ngIf="problemeForm.get('nom').errors.maxlength">
+                  <small class="text-muted">
+                    Veuillez saisir moins de caractères.
+                  </small>
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="nomId" class="col-md-2 col-form-label">Type de problème : </label>
+            <div class="col-md-10">
+              <select class="form-control" id="noTypeproblemeId" formControlName="noTypeprobleme"
+                [ngClass]="{'is-valid':(problemeForm.get('noTypeprobleme').touched || problemeForm.get('noTypeprobleme').dirty) && (problemeForm.get('noTypeprobleme').valid),
+            'is-invalid':(problemeForm.get('noTypeprobleme').touched || problemeForm.get('noTypeprobleme').dirty) && !(problemeForm.get('noTypeprobleme').valid)}">
+                <option value="" disabled>Sélectionner une catégorie de produit</option>
+                <option *ngFor="let cat of typeproblemeTab" [value]="cat.id">{{cat.descriptionProbleme}}</option>
+              </select>
+              <span *ngIf="(problemeForm.get('noTypeprobleme').touched ||
+                        problemeForm.get('noTypeprobleme').dirty) && (problemeForm.get('noTypeprobleme').errors)">
+                <small class="text-muted">
+                  Merci de sélectionner un type de problème.
+                </small>
+              </span>
+            </div>
+          </div>
+
+
           <button type="submit" class="btn btn-primary">
             <i class="fas fa-save"></i> Sauvegarder
           </button>
