@@ -71,9 +71,11 @@
               </select>
               <span *ngIf="(problemeForm.get('noTypeprobleme').touched ||
                         problemeForm.get('noTypeprobleme').dirty) && (problemeForm.get('noTypeprobleme').errors)">
-                <small class="text-muted">
-                  Merci de sélectionner un type de problème.
-                </small>
+                <span *ngIf="problemeForm.get('noTypeProbleme').errors.required">
+                  <small class="text-muted">
+                    Merci de sélectionner un type de problème.
+                  </small>
+                </span>
               </span>
             </div>
           </div>

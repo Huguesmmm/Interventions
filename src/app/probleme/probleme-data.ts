@@ -1,9 +1,9 @@
-import { InMemoryDbService } from "angular-in-memory-web-api";
-import { IProbleme } from "./typeprobleme";
+import { InMemoryBackendConfig, InMemoryDbService } from "angular-in-memory-web-api";
+import { ITypeProbleme as ITypeProbleme } from "./typeprobleme";
 
-export class ProblemeData implements InMemoryDbService {
+export class ProblemeData implements InMemoryDbService, InMemoryBackendConfig {
     createDb() {
-        let probleme: IProbleme[] = [
+        let typesprobleme: ITypeProbleme[] = [
             {
                 'id': 1,
                 'descriptionProbleme': 'Problème avec la souris'
@@ -41,6 +41,6 @@ export class ProblemeData implements InMemoryDbService {
                 'descriptionProbleme': 'Autre'
             }
         ];
-        return { probleme };
+        return { probleme: typesprobleme };
     }
 }
