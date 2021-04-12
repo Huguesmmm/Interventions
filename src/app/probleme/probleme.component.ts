@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
+import { emailMatcherValidator } from '../shared/email-matcher/email-matcher.component';
 import { ZonesValidator } from '../shared/longueur-minimum/longueur-minimum.component';
 import { ITypeProbleme } from './typeprobleme';
 import { TypeproblemeService } from './typeprobleme.service';
@@ -51,22 +52,23 @@ export class ProblemeComponent implements OnInit {
     courrielConfirmationControl.reset();
     courrielConfirmationControl.disable();
 
+    courrielGroupControl.clearValidators();
+
     telephoneControl.clearValidators();
     telephoneControl.reset();
     telephoneControl.disable();
 
     if (typeNotification === 'ParCourriel') {
+      courrielControl.setValidators([Validators.required, Validators.email]);
       courrielControl.enable();
-    }
-    else {
-      if (typeNotification === 'NePasMeNotifier') {
-        courrielControl.setValidators([Validators.required]);
-        courrielControl.disable();
-      }
+      courrielConfirmationControl.setValidators([Validators.required, Validators.email]);
+      courrielConfirmationControl.enable();
+      courrielGroupControl.setValidators(Validators.compose([emailMatcherValidator.courrielDifferents()]));
     }
     courrielControl.updateValueAndValidity();
     courrielConfirmationControl.updateValueAndValidity();
     telephoneControl.updateValueAndValidity();
+    courrielGroupControl.updateValueAndValidity();
   }
   save(): void { }
 
