@@ -64,6 +64,9 @@ export class ProblemeComponent implements OnInit {
       courrielConfirmationControl.setValidators([Validators.required, Validators.email]);
       courrielConfirmationControl.enable();
       courrielGroupControl.setValidators(Validators.compose([emailMatcherValidator.courrielDifferents()]));
+    } else if (typeNotification === 'ParMessageTexte') {
+      telephoneControl.setValidators([Validators.required, Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]);
+      telephoneControl.enable();
     }
     courrielControl.updateValueAndValidity();
     courrielConfirmationControl.updateValueAndValidity();
