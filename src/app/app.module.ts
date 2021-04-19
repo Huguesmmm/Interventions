@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ProblemeComponent } from './probleme/probleme.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -20,7 +20,6 @@ import { ProblemeData } from './probleme/probleme-data';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(ProblemeData, { delay: 1000 })

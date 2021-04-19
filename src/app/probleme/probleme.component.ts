@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { emailMatcherValidator } from '../shared/email-matcher/email-matcher.component';
 import { ZonesValidator } from '../shared/longueur-minimum/longueur-minimum.component';
 import { ITypeProbleme } from './typeprobleme';
@@ -22,20 +21,26 @@ export class ProblemeComponent implements OnInit {
       prenom: ['', [Validators.required, ZonesValidator.longueurMinimum(3)]],
       nom: ['', [Validators.required, Validators.maxLength(50)]],
       noTypeprobleme: ['', [Validators.required]],
-      notification: ['ParCourriel'],
+      notification: ['Aucune'],
       courrielGroup: this.fb.group({
         courriel: [{ value: '', disabled: true }],
         courrielConfirmation: [{ value: '', disabled: true }]
       }),
-      telephone: [{ value: '', disabled: true }]
+      telephone: [{ value: '', disabled: true }],
+      descriptionProbleme: ['', [Validators.required, Validators.minLength(5)]],
+      noUnite: '',
+      dateProbleme: { value: Date(), disabled: true }
     });
 
     this.typeprobleme.obtenirTypeProbleme()
       .subscribe(cat => this.typeproblemeTab = cat,
         error => this.errorMessage = <any>error);
 
+    this.problemeForm.get('notification').valueChanges
+      .subscribe(value => this.appliquerNotifications(value));
+
   }
-  faSave = faSave;
+
   appliquerNotifications(typeNotification: string): void {
     const courrielControl = this.problemeForm.get('courrielGroup.courriel');
     const courrielConfirmationControl = this.problemeForm.get('courrielGroup.courrielConfirmation');
@@ -64,7 +69,7 @@ export class ProblemeComponent implements OnInit {
       courrielConfirmationControl.setValidators([Validators.required, Validators.email]);
       courrielConfirmationControl.enable();
       courrielGroupControl.setValidators(Validators.compose([emailMatcherValidator.courrielDifferents()]));
-    } else if (typeNotification === 'ParMessageTexte') {
+    } else if (typeNotification === 'ParTelephone') {
       telephoneControl.setValidators([Validators.required, Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]);
       telephoneControl.enable();
     }
