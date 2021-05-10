@@ -5,7 +5,7 @@ export interface IProbleme {
     nom: string,
     noTypeProbleme?: number,
     courriel?: string,
-    courrielConfirmation?: string,
+    //courrielConfirmation?: string,
     telephone?: string,
     notification: string,
     noUnite?: string,

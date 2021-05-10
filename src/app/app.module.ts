@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ProblemeComponent } from './probleme/probleme.component';
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ProblemeData } from './probleme/probleme-data';
+import { TypeproblemeService } from './probleme/typeprobleme.service';
+import { ProblemeService } from './probleme/probleme.service';
 
 @NgModule({
   declarations: [
@@ -21,10 +21,9 @@ import { ProblemeData } from './probleme/probleme-data';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(ProblemeData, { delay: 1000 })
+    HttpClientModule
   ],
-  providers: [],
+  providers: [TypeproblemeService, ProblemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

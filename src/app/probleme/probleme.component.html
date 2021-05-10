@@ -67,7 +67,7 @@
                 [ngClass]="{'is-valid':(problemeForm.get('noTypeprobleme').touched || problemeForm.get('noTypeprobleme').dirty) && (problemeForm.get('noTypeprobleme').valid),
             'is-invalid':(problemeForm.get('noTypeprobleme').touched || problemeForm.get('noTypeprobleme').dirty) && !(problemeForm.get('noTypeprobleme').valid)}">
                 <option value="" disabled>Sélectionner une catégorie de produit</option>
-                <option *ngFor="let cat of typeproblemeTab" [value]="cat.id">{{cat.descriptionProbleme}}</option>
+                <option *ngFor="let cat of typeproblemeTab" [value]="cat.id">{{cat.descriptionTypeProbleme}}</option>
               </select>
               <span *ngIf="(problemeForm.get('noTypeprobleme').touched ||
                         problemeForm.get('noTypeprobleme').dirty) && (problemeForm.get('noTypeprobleme').errors)">
