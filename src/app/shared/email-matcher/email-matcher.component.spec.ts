@@ -1,5 +1,0 @@
-
-
-describe('courriel zone Validator', () => {
-
-});
