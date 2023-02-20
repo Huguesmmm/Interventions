@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 
+[<img src="https://github.com/Huguesmmm/Interventions/blob/73da337bcd115968ec6f0f4df21d1674c10e10ae/src/assets/images/screenshot-deployment.png" width="250" height=250>](https://interventions.vercel.app/accueil)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
